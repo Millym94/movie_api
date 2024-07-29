@@ -4,20 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentation</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
   <h1>Documentation</h1>
-  <div>
-    <p>The web application offers users comprehensive access to information about a wide range of movies, directors, and genres. Users can register for an account, update their personal information, and curate a personalized list of their favorite movies.
-      </p>
-      
-    <p>Here is the documentation for the Movie API:</p>
-  
+  <p>The web application offers users comprehensive access to information about a wide range of movies, directors, and genres. Users can register for an account, update their personal information, and curate a personalized list of their favorite movies.</p>
   <h2>Endpoints</h2>
-  <ul>
-    <li>GET /movies - get all movies</li>
-    <li>GET /documentation - get documentation page</li>
-  </ul>
-  </div>
+  <table>
+    <tr>
+      <th>Request</th>
+      <th>URL</th>
+      <th>Response</th>
+      <th>Description</th>
+      <th>Query Parameters</th>
+      <th>Request Body</th>
+      <th>Response Format</th>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/movies</td>
+      <td>Returns a list of all movies</td>
+      <td>List of movies with title, description, genre, director, image URL, and whether it’s featured</td>
+      <td>None</td>
+      <td>None</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/movies/:title</td>
+      <td>Returns data about a single movie by title</td>
+      <td>Data about a specific movie with title, description, genre, director, image URL, and whether it’s featured</td>
+      <td>title (string)</td>
+      <td>None</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/genres/:name</td>
+      <td>Returns data about a genre by name</td>
+      <td>Data about a specific genre including its description</td>
+      <td>name (string)</td>
+      <td>None</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/directors/:name</td>
+      <td>Returns data about a director by name</td>
+      <td>Data about a specific director including bio, birth year, and death year</td>
+      <td>name (string)</td>
+      <td>None</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/users</td>
+      <td>Allows new users to register</td>
+      <td>Registers a new user with provided user information</td>
+      <td>None</td>
+      <td>
+        <pre>{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "password": "password123"
+}</pre>
+      </td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>/users/:username</td>
+      <td>Allows users to update their user info</td>
+      <td>Updates the user information for the specified username</td>
+      <td>username (string)</td>
+      <td>
+        <pre>{
+  "email": "updatedemail@example.com",
+  "password": "newpassword123"
+}</pre>
+      </td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/users/:username/movies/:movieId</td>
+      <td>Allows users to add a movie to their list of favorites</td>
+      <td>Adds a movie to the user's list of favorites</td>
+      <td>username (string), movieId (integer)</td>
+      <td>None</td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>/users/:username/movies/:movieId</td>
+      <td>Allows users to remove a movie from their list of favorites</td>
+      <td>Removes a movie from the user's list of favorites</td>
+      <td>username (string), movieId (integer)</td>
+      <td>None</td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>/users/:username</td>
+      <td>Allows existing users to deregister</td>
+      <td>Deletes the user account</td>
+      <td>username (string)</td>
+      <td>None</td>
+      <td>Text</td>
+    </tr>
+  </table>
 </body>
 </html>
